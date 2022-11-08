@@ -56,10 +56,21 @@ const posts = [
     }
 ];
 
-for (let i = 0; i < 1; i++) {
+console.log(posts[1].author.name);
+let date = posts[1].created;
+// console.log(date.substring(5, 7));
+
+for (let i = 0; i < posts.length; i++) {
     const post = document.createElement('div');
     post.classList.add('post');
     document.querySelector('#container').append(post);
+
+    let date = posts[i].created;
+    let postDateNumber = 10 - Number(date.substring(6, 7));
+    let postDate = `${postDateNumber} mesi fa`
+    if (postDateNumber === 1) {
+        postDate = `${postDateNumber} mese fa`
+    }
 
     // HEADER
     const postHeader = document.createElement('div');
@@ -68,11 +79,11 @@ for (let i = 0; i < 1; i++) {
     postHeader.innerHTML = `
         <div class="post-meta">                    
             <div class="post-meta__icon">
-                <img class="profile-pic" src="https://unsplash.it/300/300?image=15" alt="Phil Mangione">                    
+                <img class="profile-pic" src="${posts[i].author.image}" alt="${posts[i].author.name}">                    
             </div>
             <div class="post-meta__data">
-                <div class="post-meta__author">VARIABILENOME</div>
-                <div class="post-meta__time">DATA</div>
+                <div class="post-meta__author">${posts[i].author.name}</div>
+                <div class="post-meta__time">${postDate}</div>
             </div>                    
         </div>`
 
@@ -100,7 +111,7 @@ for (let i = 0; i < 1; i++) {
                     <span class="like-button__label">Mi Piace</span>
                 </a>
             </div>
-            
+
             <div class="likes__counter">
                 Piace a <b id="like-counter-1" class="js-likes-counter">80</b> persone
             </div>
