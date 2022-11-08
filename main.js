@@ -91,13 +91,13 @@ for (let i = 0; i < posts.length; i++) {
     const postText = document.createElement('div');
     postText.classList.add('post__text');
     post.append(postText);
-    postText.innerHTML = "LOREM IPSUM";
+    postText.innerHTML = `${posts[i].content}`;
 
     // IMMAGINE
     const postImage = document.createElement('div');
     postImage.classList.add('post__image');
     post.append(postImage);
-    postImage.innerHTML = `<img src="https://unsplash.it/600/300?image=171" alt="">`;
+    postImage.innerHTML = `<img src="${posts[i].author.image}" alt="">`;
 
     // FOOTER
     const postFooter = document.createElement('div');
@@ -113,7 +113,7 @@ for (let i = 0; i < posts.length; i++) {
             </div>
 
             <div class="likes__counter">
-                Piace a <b id="like-counter-1" class="js-likes-counter">80</b> persone
+                Piace a <b id="like-counter-1" class="js-likes-counter">${posts[i].likes}</b> persone
             </div>
         </div> `
 }
