@@ -56,10 +56,6 @@ const posts = [
     }
 ];
 
-console.log(posts[1].author.name);
-let date = posts[1].created;
-// console.log(date.substring(5, 7));
-
 for (let i = 0; i < posts.length; i++) {
     const post = document.createElement('div');
     post.classList.add('post');
@@ -71,6 +67,7 @@ for (let i = 0; i < posts.length; i++) {
     if (postDateNumber === 1) {
         postDate = `${postDateNumber} mese fa`
     }
+
 
     // HEADER
     const postHeader = document.createElement('div');
@@ -106,7 +103,7 @@ for (let i = 0; i < posts.length; i++) {
     postFooter.innerHTML = `
         <div class="likes js-likes">
             <div class="likes__cta">
-                <a class="like-button  js-like-button" href="#" data-postid="1">
+                <a class="like-button  js-like-button" href="#" onclick="event.preventDefault()" data-postid="1">
                     <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                     <span class="like-button__label">Mi Piace</span>
                 </a>
@@ -115,5 +112,9 @@ for (let i = 0; i < posts.length; i++) {
             <div class="likes__counter">
                 Piace a <b id="like-counter-1" class="js-likes-counter">${posts[i].likes}</b> persone
             </div>
-        </div> `
+        </div> `;
 }
+
+document.querySelectorAll('.like-button').forEach(link => link.addEventListener('click', () => {
+    link.classList.toggle("like-button--liked");
+  }));
